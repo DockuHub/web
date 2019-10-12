@@ -1,12 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import * as serviceWorker from "./serviceWorker";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+// UI Theme
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "./styles/theme";
+
+// Routes
+import { public_routes } from "./routes/public_routes";
+import { private_routes } from "./routes/private_routes";
+
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <App public_routes={public_routes} private_routes={private_routes} />
+  </ThemeProvider>,
+  document.getElementById("root")
+);
+
 serviceWorker.unregister();
